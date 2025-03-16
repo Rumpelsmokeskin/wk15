@@ -3,7 +3,6 @@ import { Sauna } from "./Saunas";
 import ToolButton from "./ToolButton";
 
 const cardStyle = {
- 
   width: "25rem",
   center: "text-center",
 };
@@ -79,14 +78,18 @@ export default function SaunaView({
             <ToolButton
               buttonText="Update Sauna"
               buttonColor="purple"
-              onClick={() =>
+              onClick={() => {
                 updateSaunaText(
                   selectedSaunaID,
-                  inputText,
-                  inputImage,
-                  inputName
-                )
-              }
+                  inputText === "" ? sauna[selectedSaunaID].text : inputText,
+                  inputImage === "" ? sauna[selectedSaunaID].image : inputImage,
+                  inputName === "" ? sauna[selectedSaunaID].name : inputName
+                
+                );
+                setInputImage("");
+                setInputName("");
+                setInputText("");
+              }}
             />
           </form>
         </div>
